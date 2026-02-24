@@ -4,13 +4,18 @@
     "title": "Mini Todo API",
     "version": "1.0.0"
   },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
   "paths": {
     "/todos": {
       "get": {
         "summary": "Liste aller Todos",
         "responses": {
           "200": {
-            "description": "Erfolgreich",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -18,6 +23,31 @@
                   "items": {
                     "$ref": "#/components/schemas/Todo"
                   }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Neues Todo anlegen",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Todo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Erstellt",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Todo"
                 }
               }
             }
